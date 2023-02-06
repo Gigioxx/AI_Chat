@@ -1,7 +1,5 @@
+# Node Modules
 node_modules
-dist
-dist-ssr
-*.local
 
 # Environment Variables
 .env
