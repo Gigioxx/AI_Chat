@@ -15,10 +15,10 @@ function loader(element) {
   element.textContent = '';
 
   // When AI is processing the answer, will put a dot every 300ms up to 3 dots
-  // Then, will clear the dots and start again
   loadInterval = setInterval(() => {
     element.textContent += '.';
 
+    // If there are 3 dots, clear the dots
     if (element.textContent === '....') {
       element.textContent = '';
     }
@@ -31,9 +31,8 @@ function typeText(element, text) {
   let index = 0;
 
   let interval = setInterval(() => {
-    // We are still typing
     if (index < text.length) {
-      element.innerHtml += text.charAt(index);
+      element.innerHTML += text.charAt(index);
       index++;
     } else {
       clearInterval(interval);
@@ -53,18 +52,18 @@ function generateUniqueId() {
 // function that displays the message on the screen
 function chatStripe(isAi, value, uniqueId) {
   return `
-      <div class="wrapper ${isAi && 'ai'}">
-        <div class="chat">
-          <div class="profile">
-            <img
-              src="${isAi ? bot : user}"
-              alt="${isAi ? 'bot' : 'user'}"
-            />
+        <div class="wrapper ${isAi && 'ai'}">
+          <div class="chat">
+            <div class="profile">
+              <img
+                src="${isAi ? bot : user}"
+                alt="${isAi ? 'bot' : 'user'}"
+              />
+            </div>
+            <div class="message" id=${uniqueId}>${value}</div>
           </div>
-          <div class="message" id=${uniqueId}>${value}</div>
         </div>
-      </div>
-    `;
+      `;
 }
 
 // Function that will be called when the form is submitted
@@ -103,7 +102,7 @@ const handleSubmit = async (e) => {
   });
 
   clearInterval(loadInterval);
-  messageDiv.innerHTML = '';
+  messageDiv.innerHTML = ' ';
 
   if (response.ok) {
     const data = await response.json();
