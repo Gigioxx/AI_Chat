@@ -91,7 +91,7 @@ const handleSubmit = async (e) => {
 
   // Fetch data from server
 
-  const response = await fetch('https://ai-chat-server.vercel.app/', {
+  const response = await fetch('http://localhost:5555', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
