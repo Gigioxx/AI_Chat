@@ -2,6 +2,9 @@
 
 This is a chatbot that uses OpenAi API to generate responses to user input. It is a simple implementation of the GPT-3 model.
 
+###
+Try the demo [here](https://ai-chat-gigioxx.vercel.app/)!
+
 ## Installation
 
 ### Install server dependencies
